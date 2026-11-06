@@ -58,7 +58,10 @@ def plot_feature_diagnostics(
         )
 
     fig = make_subplots(
-        rows=len(features.columns), cols=3, subplot_titles=titles, vertical_spacing=0.01
+        rows=len(features.columns),
+        cols=3,
+        subplot_titles=titles,
+        vertical_spacing=min(0.08, 0.6 / len(features.columns)),
     )
     for row, feature in enumerate(features, start=1):
         series = _diagnostic_series(features[feature])
@@ -78,8 +81,11 @@ def plot_feature_diagnostics(
             )
     fig.update_layout(
         title="Feature diagnostics",
-        height=210 * len(features.columns),
+        width=1100,
+        height=300 * len(features.columns),
+        font=dict(size=13),
         showlegend=False,
     )
-    fig.update_annotations(font_size=11)
+    fig.update_annotations(font_size=12)
+    fig.update_xaxes(dtick="M12", tickformat="%Y")
     return fig
