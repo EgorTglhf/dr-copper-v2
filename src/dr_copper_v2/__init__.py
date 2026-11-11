@@ -14,6 +14,15 @@ from dr_copper_v2.mean_models import compare_mean_models, forecast_mean_models
 from dr_copper_v2.pca import compare_loadings, fit_pca, transform_pca
 from dr_copper_v2.regimes import fit_regimes, predict_regimes, regime_diagnostics
 from dr_copper_v2.splitting import walk_forward_split
+from dr_copper_v2.volatility import (
+    compare_garch_models,
+    compare_variance_forecasts,
+    fit_garch,
+    forecast_garch_models,
+    garch_residual_summary,
+    plot_garch_forecasts,
+    plot_garch_residuals,
+)
 
 __all__ = [
     "fetch_raw",
@@ -34,4 +43,11 @@ __all__ = [
     "fit_regimes",
     "predict_regimes",
     "regime_diagnostics",
+    "fit_garch",
+    "forecast_garch_models",
+    "compare_garch_models",
+    "compare_variance_forecasts",
+    "garch_residual_summary",
+    "plot_garch_forecasts",
+    "plot_garch_residuals",
 ]
