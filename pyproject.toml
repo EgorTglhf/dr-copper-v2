@@ -20,6 +20,7 @@ dependencies = [
     "arch (>=8.0.0,<9.0.0)",
     "xgboost (>=3.4.1,<4.0.0)",
     "optuna (>=5.0.0,<6.0.0)",
+    "quantstats (>=0.0.86,<0.0.87)",
 ]
 
 [tool.poetry]

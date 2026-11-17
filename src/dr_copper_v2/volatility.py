@@ -63,7 +63,9 @@ def garch_residual_summary(fits, lags=(5, 10, 20)):
     return pd.concat(results, names=["model", "lag"])
 
 
-def forecast_garch_models(returns, splits):
+def forecast_garch_models(returns, splits, distributions=None):
+    if distributions is None:
+        distributions = {"Gaussian": "normal", "Student-t": "t"}
     forecasts, refits = [], []
     for split in splits.itertuples():
         train = returns.loc[split.train_start : split.train_end]
@@ -71,7 +73,7 @@ def forecast_garch_models(returns, splits):
         if block.empty:
             continue
         fold = split.test_start.strftime("%Y-%m")
-        for name, distribution in {"Gaussian": "normal", "Student-t": "t"}.items():
+        for name, distribution in distributions.items():
             fit = fit_garch(train, dist=distribution)
             if fit.convergence_flag != 0:
                 raise ValueError(f"{name} GARCH did not converge for {fold}.")

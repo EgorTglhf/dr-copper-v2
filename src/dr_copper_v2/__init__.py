@@ -1,5 +1,10 @@
 """Dr. Copper v2 quantitative research pipeline."""
 
+from dr_copper_v2.backtest import (
+    backtest_long_cash,
+    backtest_summary,
+    long_cash_targets,
+)
 from dr_copper_v2.data_loader import fetch_raw
 from dr_copper_v2.diagnostics import (
     adf_summary,
@@ -29,6 +34,9 @@ from dr_copper_v2.volatility import (
 )
 
 __all__ = [
+    "backtest_long_cash",
+    "backtest_summary",
+    "long_cash_targets",
     "fetch_raw",
     "fetch_features",
     "add_macro_changes",
